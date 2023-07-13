@@ -1,15 +1,37 @@
 package ca.calvert.moodify.model;
 
-public class User {
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Profile {
     private String userId;
     private String email;
-    private String password;
 
     // Constructor
-    public User(String userId, String email, String password) {
+
+
+    public Profile() {
+    }
+
+    public Profile(String userId, String email) {
         this.userId = userId;
         this.email = email;
-        this.password = password;
+    }
+
+    // Another constructor to create a User object from a Firestore DocumentSnapshot
+    public Profile(DocumentSnapshot documentSnapshot) {
+        this.userId = documentSnapshot.getString("userId");
+        this.email = documentSnapshot.getString("email");
+    }
+
+    // Method to convert the user object into a map
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", this.userId);
+        map.put("email", this.email);
+        return map;
     }
 
     // Getters and Setters
@@ -27,14 +49,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     // Methods

@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"/>
 
     <EditText
-        android:id="@+id/password_confirm"
+        android:id="@+id/re_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
