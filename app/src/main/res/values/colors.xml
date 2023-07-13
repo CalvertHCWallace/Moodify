@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="my_light_primary">#6200EE</color> <!-- Example purple color -->
+    <color name="my_light_on_primary">#FFFFFF</color> <!-- Example white color -->
+    <color name="my_light_secondary">#03DAC6</color> <!-- Example teal color -->
+    <color name="my_light_on_secondary">#000000</color> <!-- Example black color -->
+    <color name="my_light_background">#FFFFFF</color> <!-- Example white color -->
+    <color name="my_light_error">#B00020</color> <!-- Example red color -->
+    <color name="my_light_nav_bar">#6200EE</color> <!-- Example purple color -->
+    <color name="my_text_color">#000000</color> <!-- Example black color -->
+</resources>
