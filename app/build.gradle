@@ -74,23 +74,42 @@ dependencies {
     // for storing and retrieving the images used in the mood boards.
     implementation 'com.google.firebase:firebase-storage'
 
+    // Define dependency constraints for the Kotlin standard library.
+    // These constraints are included to ensure that the appropriate Kotlin standard library
+    // is used for the version of Kotlin in use by your project.
     constraints {
+        // This dependency is for Kotlin standard library for Java 7.
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
         }
+        // This dependency is for Kotlin standard library for Java 8.
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
 
+    // The Compose BOM ensures that all dependencies that are used in conjunction with Compose use
+    // the same version. This prevents version conflicts between the various libraries.
     def composeBom = platform('androidx.compose:compose-bom:2023.05.01')
     implementation composeBom
     androidTestImplementation composeBom
 
-    // Choose one of the following:
-    // Material Design 3
+    // Implementation of Material Design 3 with Jetpack Compose. This is for the UI layer of the app.
     implementation 'androidx.compose.material3:material3'
+    // This library provides Activity helpers for Jetpack Compose. It's used to support Compose in
+    // your Activities.
     implementation 'androidx.activity:activity-compose:1.7.2'
+    // This dependency provides ViewModel helpers for Jetpack Compose, and is used to handle lifecycle-aware
+    // data management tasks and share data between different composable functions.
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
+    // This is the Jetpack Compose runtime livedata library. It provides LiveData support for Compose.
     implementation 'androidx.compose.runtime:runtime-livedata'
+
+    // Picasso is a powerful image downloading and caching library for Android. It simplifies the
+    // process of displaying images from external sources in your application.
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // Volley is a library that makes networking for Android apps easier and most importantly, faster.
+    // It manages the processing and caching of network requests and it saves developers valuable time
+    // from writing the same networking boilerplate code again and again.
+    implementation 'com.android.volley:volley:1.2.1'
 }

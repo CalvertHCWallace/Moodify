@@ -1,4 +1,4 @@
-package ca.calvert.moodify.view.fragments;
+package ca.calvert.moodify.views.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import ca.calvert.moodify.R;
-import ca.calvert.moodify.view.activities.AuthActivity;
-import ca.calvert.moodify.view.activities.HomeActivity;
-import ca.calvert.moodify.viewmodel.AuthViewModel;
+import ca.calvert.moodify.views.activities.AuthActivity;
+import ca.calvert.moodify.views.activities.HomeActivity;
+import ca.calvert.moodify.viewmodels.AuthViewModel;
 
 public class RegisterFragment extends Fragment {
 

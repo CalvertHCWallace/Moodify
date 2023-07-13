@@ -1,4 +1,4 @@
-package ca.calvert.moodify.model;
+package ca.calvert.moodify.models;
 
 public class Image {
     private String imageId;
@@ -6,7 +6,11 @@ public class Image {
     private String title;
     private String photographer;
 
+
     // Constructor
+    public Image() {
+    }
+
     public Image(String imageId, String imageURL, String title, String photographer) {
         this.imageId = imageId;
         this.imageURL = imageURL;
@@ -15,8 +19,6 @@ public class Image {
     }
 
     // Getters and Setters
-
-
     public String getImageId() {
         return imageId;
     }

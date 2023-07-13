@@ -1,4 +1,4 @@
-package ca.calvert.moodify.view.activities;
+package ca.calvert.moodify.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ca.calvert.moodify.R;
-import ca.calvert.moodify.view.fragments.LoginFragment;
-import ca.calvert.moodify.view.fragments.RegisterFragment;
+import ca.calvert.moodify.views.fragments.LoginFragment;
+import ca.calvert.moodify.views.fragments.RegisterFragment;
 
 public class AuthActivity extends AppCompatActivity {
 

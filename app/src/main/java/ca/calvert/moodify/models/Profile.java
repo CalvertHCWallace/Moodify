@@ -1,4 +1,4 @@
-package ca.calvert.moodify.model;
+package ca.calvert.moodify.models;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 

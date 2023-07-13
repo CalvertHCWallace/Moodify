@@ -1,6 +1,4 @@
-package ca.calvert.moodify.model;
-
-import android.media.Image;
+package ca.calvert.moodify.models;
 
 import java.util.ArrayList;
 import java.util.List;

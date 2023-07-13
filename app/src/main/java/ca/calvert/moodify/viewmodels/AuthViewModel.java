@@ -1,4 +1,4 @@
-package ca.calvert.moodify.viewmodel;
+package ca.calvert.moodify.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.LiveData;
@@ -6,10 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
-import java.util.Map;
 
-import ca.calvert.moodify.model.Profile;
+import ca.calvert.moodify.models.Profile;
 
 public class AuthViewModel extends ViewModel {
     private final FirebaseAuth mAuth;
