@@ -11,7 +11,7 @@ import ca.calvert.moodify.R;
 import ca.calvert.moodify.view.fragments.LoginFragment;
 import ca.calvert.moodify.view.fragments.RegisterFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class AuthActivity extends AppCompatActivity {
 
     // Declare an instance of FirebaseAuth
     private FirebaseAuth mAuth;

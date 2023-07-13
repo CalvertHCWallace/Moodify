@@ -11,28 +11,30 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import ca.calvert.moodify.R;
-import ca.calvert.moodify.view.activities.MainActivity;
+import ca.calvert.moodify.view.activities.AuthActivity;
 
 public class LoginFragment extends Fragment {
 
-    private Button registerButton;
+    private Button loginBtn, toRegisterBtn;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        registerButton = view.findViewById(R.id.register);
+        loginBtn = view.findViewById(R.id.login);
+        toRegisterBtn = view.findViewById(R.id.register);
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        toRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Communicate with the MainActivity to switch the fragment
-                ((MainActivity) getActivity()).showRegisterFragment();
+                ((AuthActivity) getActivity()).showRegisterFragment();
             }
         });
 
         return view;
     }
+
 }
 
