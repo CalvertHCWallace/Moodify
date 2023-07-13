@@ -37,7 +37,16 @@ public class AuthViewModel extends ViewModel {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        createUserInFirestore(user, email);
+                        if (user != null) {
+                            user.sendEmailVerification()
+                                    .addOnCompleteListener(verificationTask -> {
+                                        if (verificationTask.isSuccessful()) {
+                                            createUserInFirestore(user, email);
+                                        } else {
+                                            // TODO: handle failed verification email sending
+                                        }
+                                    });
+                        }
                     } else {
                         registrationSuccessful.postValue(null);
                     }
