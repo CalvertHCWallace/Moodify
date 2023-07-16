@@ -1,4 +1,4 @@
-package ca.calvert.moodify;
+package ca.calvert.moodify.utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

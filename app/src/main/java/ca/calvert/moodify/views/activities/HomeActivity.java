@@ -9,7 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ca.calvert.moodify.R;
-import ca.calvert.moodify.views.fragments.MoodBoardFragment;
+import ca.calvert.moodify.views.fragments.CollectionFragment;
 import ca.calvert.moodify.views.fragments.SearchFragment;
 import ca.calvert.moodify.views.fragments.ProfileFragment;
 
@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Load the first Fragment
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainer, new MoodBoardFragment())
+                .replace(R.id.fragmentContainer, new CollectionFragment())
                 .commit();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
@@ -33,15 +33,22 @@ public class HomeActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
 
             if (item.getItemId() == R.id.moodBoardItem) {
-                selectedFragment = new MoodBoardFragment();
+                selectedFragment = new CollectionFragment();
             } else if (item.getItemId() == R.id.searchItem) {
                 selectedFragment = new SearchFragment();
             } else if (item.getItemId() == R.id.profileItem) {
-                selectedFragment = new ProfileFragment();
+                // Check if there's a user signed in
+                if (mAuth.getCurrentUser() != null) {
+                    // Create a ProfileFragment and pass the user ID to it
+                    selectedFragment = ProfileFragment.newInstance(mAuth.getCurrentUser().getUid());
+                } else {
+                    // There's no user signed in. You may want to navigate to a login page instead.
+                    // For now, just don't create a ProfileFragment.
+                }
             }
 
             if (selectedFragment != null) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
             }
 
             return true;  // Indicates that the event is handled
@@ -49,3 +56,4 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 }
+

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoodBoard {
-    private String moodBoardId;
-    private String moodBoardName;
+    private String id;
+    private String name;
     private List<String> imageIds;
     private String userId;
+    private boolean isPublic;
 
     // Constructor
 
@@ -15,25 +16,26 @@ public class MoodBoard {
     public MoodBoard() {
     }
 
-    public MoodBoard(String moodBoardId, String moodBoardName, String userId) {
-        this.moodBoardName = moodBoardName;
+    public MoodBoard(String name, String userId, boolean isPublic) {
+        this.name = name;
         this.userId = userId;
+        this.isPublic = isPublic;
     }
 
-    public String getMoodBoardId() {
-        return moodBoardId;
+    public String getId() {
+        return id;
     }
 
-    public void setMoodBoardId(String moodBoardId) {
-        this.moodBoardId = moodBoardId;
+    public void setId(String moodBoardId) {
+        this.id = moodBoardId;
     }
 
-    public String getMoodBoardName() {
-        return moodBoardName;
+    public String getName() {
+        return name;
     }
 
-    public void setMoodBoardName(String moodBoardName) {
-        this.moodBoardName = moodBoardName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<String> getImages() {
@@ -52,6 +54,14 @@ public class MoodBoard {
         this.userId = userId;
     }
 
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setPublic(boolean aPublic) {
+        isPublic = aPublic;
+    }
+
     // Methods
     public void addImage(String imageId) {
         if (this.imageIds == null) {
@@ -68,7 +78,7 @@ public class MoodBoard {
 
 
     public void rename(String name) {
-        this.moodBoardName = name;
+        this.name = name;
     }
 }
 

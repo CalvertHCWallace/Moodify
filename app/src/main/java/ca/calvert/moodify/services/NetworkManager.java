@@ -1,4 +1,4 @@
-package ca.calvert.moodify;
+package ca.calvert.moodify.services;
 
 import android.content.Context;
 
@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import ca.calvert.moodify.models.Image;
+import ca.calvert.moodify.utils.ImageParser;
 
 public class NetworkManager {
     private static final String BASE_URL = "https://www.flickr.com/services/rest/";

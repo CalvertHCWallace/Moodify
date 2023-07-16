@@ -2,11 +2,14 @@ package ca.calvert.moodify.views.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import ca.calvert.moodify.views.activities.AuthActivity;
 import ca.calvert.moodify.views.activities.HomeActivity;
 import ca.calvert.moodify.viewmodels.AuthViewModel;
 
+// Fragment handling the login process
 public class LoginFragment extends Fragment {
 
     private AuthViewModel authViewModel;
@@ -28,8 +32,10 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        // Initialize Buttons
         loginBtn = view.findViewById(R.id.login);
         toRegisterBtn = view.findViewById(R.id.register);
 
@@ -40,7 +46,32 @@ public class LoginFragment extends Fragment {
         // Initialize ViewModel
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
-        // Set OnClickListener for login button
+        // Setup actions for EditTexts and Buttons
+        setupEditTextActions();
+        setupButtonActions();
+
+        // Observe the LiveData for login status
+        observeLoginStatus();
+
+        return view;
+    }
+
+    // Setup actions for EditTexts
+    private void setupEditTextActions() {
+        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    loginBtn.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    // Setup actions for Buttons
+    private void setupButtonActions() {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +93,10 @@ public class LoginFragment extends Fragment {
                 ((AuthActivity) getActivity()).showRegisterFragment();
             }
         });
+    }
 
+    // Observe the LiveData for login status
+    private void observeLoginStatus() {
         authViewModel.getLoginStatus().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
                 Toast.makeText(getActivity(), "Login successful.", Toast.LENGTH_SHORT).show();
@@ -73,9 +107,5 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), "Login failed.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        return view;
     }
-
 }
-
